@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contactsActions';
 import s from './ContactForm.module.css';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -23,8 +26,9 @@ const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
-    // onsubmit && onSubmit(this.state); перевірка чи прийшла функція, варто робити
+
+    dispatch(addContact({ name, number }));
+
     reset();
   };
 
@@ -68,7 +72,4 @@ const ContactForm = ({ onSubmit }) => {
   );
 };
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-};
 export default ContactForm;
