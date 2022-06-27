@@ -19,11 +19,6 @@ const contactsPersistConfig = {
   storage,
   blacklist: ['filter'],
 };
-// const logger = createLogger({
-//   timestamp: false,
-//   collapsed: (getState, action, logEntry) => !logEntry.error,
-//   predicate: () => process.env.NODE_ENV !== 'production',
-// });
 
 // const middleware = [
 //   ...getDefaultMiddleware({
